@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../../redux/action";
@@ -40,7 +40,15 @@ const CreateReport = ({ navigation: { navigate, goBack }, route }) => {
     setTotal(value);
   }, [chosedExpenses]);
 
-  const onSave = () => {
+  const onSave = (sending) => {
+    if (chosedExpenses.length === 0) {
+      Alert.alert("Error", "Please chose expense", [
+        {
+          text: "Ok",
+        },
+      ]);
+      return;
+    }
     const report = {
       date: date.toDateString(),
       title: reportName,
@@ -51,11 +59,19 @@ const CreateReport = ({ navigation: { navigate, goBack }, route }) => {
     if (idReport !== "") {
       dispatch(actions.editReport({ id: idReport, report }));
       setIdReport("");
-      goBack();
+      if (sending) {
+        navigate("Send", { report });
+      } else {
+        goBack();
+      }
       return;
     }
     dispatch(actions.addReport(report));
-    goBack();
+    if (sending) {
+      navigate("Send", { report });
+    } else {
+      goBack();
+    }
   };
 
   return (
@@ -87,7 +103,10 @@ const CreateReport = ({ navigation: { navigate, goBack }, route }) => {
                 backgroundColor: "#3cb371",
               }}
               activeOpacity={0.8}
-              onPress={() => navigate("Send")}
+              onPress={() => {
+                const sending = true;
+                onSave(sending);
+              }}
             >
               <Text style={styles.buttonSaveText}>Send</Text>
             </TouchableOpacity>
