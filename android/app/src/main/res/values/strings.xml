@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="facebook_app_id">1087037468686216</string>
+    <string name="facebook_client_token">ae96f6cc4aab2050c6de55d192a4840e</string>
+</resources>

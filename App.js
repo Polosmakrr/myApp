@@ -1,49 +1,23 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { View } from "react-native";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
-import Main from "./components/Main";
-import { store, persistor } from "./redux/store";
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
 
-export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './redux/store';
 
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await SplashScreen.preventAutoHideAsync();
-        await Font.loadAsync({
-          RobotoBold: require("./fonts/roboto_bold.ttf"),
-          RobotoMonoBold: require("./fonts/roboto_mono_bold.ttf"),
-          RobotoMonoRegular: require("./fonts/roboto_mono_regular.ttf"),
-          RobotoRegular: require("./fonts/roboto_regular.ttf"),
-          RubikBold: require("./fonts/rubik_bold.ttf"),
-          RubikRegular: require("./fonts/rubik_regular.ttf"),
-        });
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        setAppIsReady(true);
-      }
-    }
+import Main from './src/Main';
+import 'react-native-gesture-handler';
 
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
-
-  if (!appIsReady) {
-    return null;
-  }
-
+const App = () => {
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <View style={styles.container}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Main />
@@ -51,4 +25,10 @@ export default function App() {
       </Provider>
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {flex: 1},
+});
+
+export default App;

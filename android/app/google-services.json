@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525255036595",
+    "firebase_url": "https://expense-de1eb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "expense-de1eb",
+    "storage_bucket": "expense-de1eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525255036595:android:cc9954ad51b24c8394eac6",
+        "android_client_info": {
+          "package_name": "com.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525255036595-t3p0b2vab3idqlldi8igajsn1vt4qe99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test",
+            "certificate_hash": "5413ce8f79230e1e4fdcbefc708677befd1a6c26"
+          }
+        },
+        {
+          "client_id": "525255036595-291c2mo1q0bpof2s7v1hjaf64c4fon83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBANUEAJ-t0w9Qif7fOM41LdAI5KclJYgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525255036595-291c2mo1q0bpof2s7v1hjaf64c4fon83.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
